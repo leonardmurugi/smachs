@@ -10,6 +10,7 @@ import {
     BarChart,
     Box
 } from 'lucide-react';
+import { useLanguage } from '@/context/LanguageContext';
 
 interface SidebarProps {
     className?: string;
@@ -18,19 +19,20 @@ interface SidebarProps {
 
 const Sidebar: React.FC<SidebarProps> = ({ className, role = 'LEARNER' }) => {
     const [collapsed, setCollapsed] = useState(true);
+    const { t } = useLanguage();
 
     const links = [
-        { name: 'Dashboard', href: '/', icon: LayoutDashboard },
-        { name: 'Modules', href: '/modules', icon: BookOpen },
-        { name: 'Certificates', href: '/certificates', icon: Award },
+        { name: t('dashboard'), href: '/', icon: LayoutDashboard },
+        { name: t('modules'), href: '/modules', icon: BookOpen },
+        { name: t('certificates'), href: '/certificates', icon: Award },
     ];
 
     if (role === 'COACH') {
-        links.push({ name: 'Cohorts', href: '/cohorts', icon: Users });
+        links.push({ name: t('coach'), href: '/coach', icon: Users });
     }
 
     if (role === 'ADMIN') {
-        links.push({ name: 'Users', href: '/admin/users', icon: Users });
+        links.push({ name: t('admin'), href: '/admin', icon: Users });
         links.push({ name: 'Analytics', href: '/admin/analytics', icon: BarChart });
     }
 
@@ -87,7 +89,7 @@ const Sidebar: React.FC<SidebarProps> = ({ className, role = 'LEARNER' }) => {
                     )}
                 >
                     <LogOut className="h-5 w-5" />
-                    {!collapsed && 'Logout'}
+                    {!collapsed && t('logout')}
                 </button>
             </div>
         </div>

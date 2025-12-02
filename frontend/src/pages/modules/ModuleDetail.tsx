@@ -10,23 +10,26 @@ import { useState } from 'react';
 import { Download, Check } from 'lucide-react';
 import ModuleChat from '@/components/features/ModuleChat';
 
+import { useLanguage } from '@/context/LanguageContext';
+
 const ModuleDetail: React.FC = () => {
     const { id } = useParams<{ id: string }>();
+    const { t, tm } = useLanguage();
     const [isDownloaded, setIsDownloaded] = useState(false);
     const [isDownloading, setIsDownloading] = useState(false);
 
-    // Mock data - in a real app, fetch based on ID
+    // Find the module from translations
+    const moduleData = tm.modulesData.find(m => m.id === Number(id)) || tm.modulesData[0];
+
+    // Merge with progress/state (mock)
     const module = {
-        id: id,
-        title: "Climate-Smart Agriculture Basics",
-        description: "Introduction to sustainable farming practices. Learn how to adapt to climate change and improve productivity.",
-        progress: 40,
-        lessons: [
-            { id: 1, title: "Introduction to CSA", type: "VIDEO", duration: "10:00", completed: true },
-            { id: 2, title: "Understanding Climate Change", type: "VIDEO", duration: "15:00", completed: true },
-            { id: 3, title: "Soil Management Practices", type: "TEXT", duration: "5 min read", completed: false },
-            { id: 4, title: "Water Management", type: "VIDEO", duration: "12:00", completed: false },
-            { id: 5, title: "Module Quiz", type: "QUIZ", duration: "20 min", completed: false },
+        ...moduleData,
+        description: moduleData.longDescription || moduleData.description,
+        progress: 40, // Mock progress
+        lessons: moduleData.lessons && moduleData.lessons.length > 0 ? moduleData.lessons : [
+            // Fallback lessons if not defined in translation
+            { id: 1, title: "Lesson 1", type: "VIDEO", duration: "10:00", completed: true },
+            { id: 2, title: "Lesson 2", type: "VIDEO", duration: "15:00", completed: true },
         ]
     };
 
@@ -56,25 +59,25 @@ const ModuleDetail: React.FC = () => {
                         {isDownloaded ? (
                             <>
                                 <Check className="mr-2 h-5 w-5" />
-                                Downloaded
+                                {t('downloaded')}
                             </>
                         ) : (
                             <>
                                 <Download className="mr-2 h-5 w-5" />
-                                {isDownloading ? 'Downloading...' : 'Download Offline'}
+                                {isDownloading ? t('downloading') : t('downloadOffline')}
                             </>
                         )}
                     </Button>
                     <Button size="lg">
                         <PlayCircle className="mr-2 h-5 w-5" />
-                        Continue Learning
+                        {t('continueLearning')}
                     </Button>
                 </div>
             </div>
 
             <div className="grid gap-6 md:grid-cols-3">
                 <div className="md:col-span-2 space-y-4">
-                    <h2 className="text-xl font-semibold">Course Content</h2>
+                    <h2 className="text-xl font-semibold">{t('courseContent')}</h2>
                     <div className="space-y-2">
                         {module.lessons.map((lesson, index) => (
                             <Card key={lesson.id} className={cn("transition-colors hover:bg-accent/50", lesson.completed && "bg-muted/30")}>
@@ -107,11 +110,11 @@ const ModuleDetail: React.FC = () => {
                 <div className="space-y-6">
                     <Card>
                         <CardHeader>
-                            <CardTitle>Your Progress</CardTitle>
+                            <CardTitle>{t('yourProgress')}</CardTitle>
                         </CardHeader>
                         <CardContent>
                             <div className="mb-2 flex justify-between text-sm">
-                                <span className="text-muted-foreground">Completed</span>
+                                <span className="text-muted-foreground">{t('completed')}</span>
                                 <span className="font-medium">{module.progress}%</span>
                             </div>
                             <div className="h-2 w-full rounded-full bg-secondary">
@@ -125,7 +128,7 @@ const ModuleDetail: React.FC = () => {
 
                     <Card>
                         <CardHeader>
-                            <CardTitle>Certificate</CardTitle>
+                            <CardTitle>{t('certificate')}</CardTitle>
                         </CardHeader>
                         <CardContent>
                             <div className="flex flex-col items-center justify-center space-y-4 text-center">
@@ -133,10 +136,10 @@ const ModuleDetail: React.FC = () => {
                                     <Lock className="h-8 w-8 text-muted-foreground" />
                                 </div>
                                 <p className="text-sm text-muted-foreground">
-                                    Complete all lessons and pass the quiz to earn your certificate.
+                                    {t('certificateLockMsg')}
                                 </p>
                                 <Button variant="outline" disabled className="w-full">
-                                    Download Certificate
+                                    {t('downloadCertificate')}
                                 </Button>
                             </div>
                         </CardContent>

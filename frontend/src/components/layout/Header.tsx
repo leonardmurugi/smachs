@@ -1,12 +1,16 @@
 import React, { useState } from 'react';
-import { Menu, Bell, User, Settings, LogOut, ChevronDown } from 'lucide-react';
+import { Menu, Bell, User, Settings, LogOut, ChevronDown, Globe, Moon, Sun } from 'lucide-react';
 import { Button } from '@/components/ui/Button';
+import { useLanguage } from '@/context/LanguageContext';
+import { useTheme } from '@/context/ThemeContext';
 
 interface HeaderProps {
     onMenuToggle: () => void;
 }
 
 const Header: React.FC<HeaderProps> = ({ onMenuToggle }) => {
+    const { language, setLanguage, t } = useLanguage();
+    const { theme, setTheme } = useTheme();
     const [showNotifications, setShowNotifications] = useState(false);
     const [showUserMenu, setShowUserMenu] = useState(false);
 
@@ -38,6 +42,29 @@ const Header: React.FC<HeaderProps> = ({ onMenuToggle }) => {
 
                 {/* Spacer */}
                 <div className="flex-1" />
+
+                {/* Language Toggle */}
+                <Button
+                    variant="ghost"
+                    size="sm"
+                    className="hidden md:flex items-center gap-2 mr-2"
+                    onClick={() => setLanguage(language === 'en' ? 'sw' : 'en')}
+                >
+                    <Globe className="h-4 w-4" />
+                    <span className="font-medium">{language === 'en' ? 'EN' : 'SW'}</span>
+                </Button>
+
+                {/* Theme Toggle */}
+                <Button
+                    variant="ghost"
+                    size="icon"
+                    className="mr-2"
+                    onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
+                >
+                    <Sun className="h-5 w-5 rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" />
+                    <Moon className="absolute h-5 w-5 rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100" />
+                    <span className="sr-only">Toggle theme</span>
+                </Button>
 
                 {/* Notifications */}
                 <div className="relative">
@@ -133,17 +160,17 @@ const Header: React.FC<HeaderProps> = ({ onMenuToggle }) => {
                                     }}
                                 >
                                     <User className="h-4 w-4" />
-                                    My Profile
+                                    {t('profile')}
                                 </button>
                                 <button className="flex items-center gap-3 w-full px-3 py-2 text-sm rounded hover:bg-muted">
                                     <Settings className="h-4 w-4" />
-                                    Settings
+                                    {t('settings')}
                                 </button>
                             </div>
                             <div className="p-2 border-t">
                                 <button className="flex items-center gap-3 w-full px-3 py-2 text-sm rounded hover:bg-muted text-red-600">
                                     <LogOut className="h-4 w-4" />
-                                    Logout
+                                    {t('logout')}
                                 </button>
                             </div>
                         </div>
