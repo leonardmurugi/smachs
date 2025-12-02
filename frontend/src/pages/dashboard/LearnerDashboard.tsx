@@ -29,6 +29,13 @@ const LearnerDashboard: React.FC = () => {
             progress: 0,
             thumbnail: "https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=800&q=80",
         },
+        {
+            id: 5,
+            title: "Food and Nutrition",
+            description: "Nutritional value of crops and food security practices.",
+            progress: 0,
+            thumbnail: "https://images.unsplash.com/photo-1490818387583-1baba5e638af?w=800&q=80",
+        },
     ];
 
     return (

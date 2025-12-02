@@ -40,6 +40,14 @@ const ModuleList: React.FC = () => {
             lessons: 6,
             thumbnail: "https://images.unsplash.com/photo-1530836369250-ef72a3f5cda8?w=800&q=80",
         },
+        {
+            id: 5,
+            title: "Food and Nutrition",
+            description: "Nutritional value of crops and food security practices.",
+            duration: "2h 30m",
+            lessons: 7,
+            thumbnail: "https://images.unsplash.com/photo-1490818387583-1baba4e638af?w=800&q=80",
+        },
     ];
 
     return (
