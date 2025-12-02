@@ -20,21 +20,21 @@ const LearnerDashboard: React.FC = () => {
             title: "Soil Health Management",
             description: "Techniques for maintaining and improving soil fertility.",
             progress: 30,
-            thumbnail: "https://images.unsplash.com/photo-1464226184884-fa280b87c399?w=800&q=80",
+            thumbnail: "https://images.unsplash.com/photo-1574943320219-553eb213f72d?w=800&q=80",
         },
         {
             id: 3,
             title: "Water Conservation",
             description: "Efficient water usage and irrigation methods.",
             progress: 0,
-            thumbnail: "https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=800&q=80",
+            thumbnail: "https://images.pexels.com/photos/30224434/pexels-photo-30224434.jpeg?auto=compress&cs=tinysrgb&w=800",
         },
         {
             id: 5,
             title: "Food and Nutrition",
             description: "Nutritional value of crops and food security practices.",
             progress: 0,
-            thumbnail: "https://images.unsplash.com/photo-1490818387583-1baba5e638af?w=800&q=80",
+            thumbnail: "https://images.unsplash.com/photo-1464226184884-fa280b87c399?w=800&q=80",
         },
     ];
 

@@ -7,6 +7,9 @@ import LoginPage from '@/pages/auth/LoginPage';
 import RegisterPage from '@/pages/auth/RegisterPage';
 import CoachDashboard from '@/pages/dashboard/CoachDashboard';
 import AdminDashboard from '@/pages/dashboard/AdminDashboard';
+import NotificationsPage from '@/pages/notifications/NotificationsPage';
+import ProfilePage from '@/pages/profile/ProfilePage';
+import CertificatesPage from '@/pages/certificates/CertificatesPage';
 
 function App() {
   return (
@@ -16,7 +19,9 @@ function App() {
           <Route index element={<LearnerDashboard />} />
           <Route path="modules" element={<ModuleList />} />
           <Route path="modules/:id" element={<ModuleDetail />} />
-          <Route path="certificates" element={<div>Certificates Page</div>} />
+          <Route path="notifications" element={<NotificationsPage />} />
+          <Route path="profile" element={<ProfilePage />} />
+          <Route path="certificates" element={<CertificatesPage />} />
           <Route path="coach" element={<CoachDashboard />} />
           <Route path="admin" element={<AdminDashboard />} />
         </Route>

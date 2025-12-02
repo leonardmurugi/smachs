@@ -144,15 +144,57 @@ const ModuleChat: React.FC<ModuleChatProps> = ({
                 {/* Input Area */}
                 <div className="border-t p-4">
                     <div className="flex gap-2">
-                        <input
-                            type="text"
-                            placeholder="Type your message..."
-                            value={newMessage}
-                            onChange={(e) => setNewMessage(e.target.value)}
-                            onKeyPress={(e) => e.key === 'Enter' && handleSendMessage()}
-                            className="flex-1 h-10 rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
-                        />
-                        <Button onClick={handleSendMessage} size="default">
+                        <div className="flex-1 space-y-2">
+                            <input
+                                type="text"
+                                placeholder="Type your message..."
+                                value={newMessage}
+                                onChange={(e) => setNewMessage(e.target.value)}
+                                onKeyPress={(e) => e.key === 'Enter' && handleSendMessage()}
+                                className="w-full h-10 rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+                            />
+                            <div className="flex gap-2">
+                                <input
+                                    type="file"
+                                    id="file-upload"
+                                    className="hidden"
+                                    accept="image/*,application/pdf,.doc,.docx"
+                                    onChange={(e) => {
+                                        const file = e.target.files?.[0];
+                                        if (file) {
+                                            alert(`File selected: ${file.name}`);
+                                            // Reset input so same file can be selected again
+                                            e.target.value = '';
+                                        }
+                                    }}
+                                />
+                                <Button
+                                    variant="outline"
+                                    size="sm"
+                                    className="flex-1"
+                                    type="button"
+                                    onClick={() => document.getElementById('file-upload')?.click()}
+                                >
+                                    <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 mr-2" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                                        <path d="m21.44 11.05-9.19 9.19a6 6 0 0 1-8.49-8.49l8.57-8.57A4 4 0 1 1 18 8.84l-8.59 8.57a2 2 0 0 1-2.83-2.83l8.49-8.48" />
+                                    </svg>
+                                    Attach File
+                                </Button>
+                                <Button
+                                    variant="outline"
+                                    size="sm"
+                                    className="flex-1"
+                                    onClick={() => alert('Video call feature - Connect via external platform')}
+                                >
+                                    <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 mr-2" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                                        <path d="m22 8-6 4 6 4V8Z" />
+                                        <rect width="14" height="12" x="2" y="6" rx="2" ry="2" />
+                                    </svg>
+                                    Video Call
+                                </Button>
+                            </div>
+                        </div>
+                        <Button onClick={handleSendMessage} size="default" className="h-10 self-start">
                             <Send className="h-4 w-4" />
                         </Button>
                     </div>

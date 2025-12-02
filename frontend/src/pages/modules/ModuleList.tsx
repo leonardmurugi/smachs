@@ -22,7 +22,7 @@ const ModuleList: React.FC = () => {
             description: "Techniques for maintaining and improving soil fertility.",
             duration: "3h 15m",
             lessons: 8,
-            thumbnail: "https://images.unsplash.com/photo-1464226184884-fa280b87c399?w=800&q=80",
+            thumbnail: "https://images.unsplash.com/photo-1574943320219-553eb213f72d?w=800&q=80",
         },
         {
             id: 3,
@@ -30,7 +30,7 @@ const ModuleList: React.FC = () => {
             description: "Efficient water usage and irrigation methods.",
             duration: "1h 45m",
             lessons: 4,
-            thumbnail: "https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=800&q=80",
+            thumbnail: "https://images.pexels.com/photos/30224434/pexels-photo-30224434.jpeg?auto=compress&cs=tinysrgb&w=800",
         },
         {
             id: 4,
@@ -46,7 +46,7 @@ const ModuleList: React.FC = () => {
             description: "Nutritional value of crops and food security practices.",
             duration: "2h 30m",
             lessons: 7,
-            thumbnail: "https://images.unsplash.com/photo-1490818387583-1baba4e638af?w=800&q=80",
+            thumbnail: "https://images.unsplash.com/photo-1464226184884-fa280b87c399?w=800&q=80",
         },
     ];
 
@@ -59,8 +59,8 @@ const ModuleList: React.FC = () => {
 
             <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
                 {modules.map((module) => (
-                    <Card key={module.id} className="overflow-hidden flex flex-col">
-                        <div className="aspect-video w-full bg-muted">
+                    <Card key={module.id} className="overflow-hidden flex flex-col h-full">
+                        <div className="aspect-video w-full bg-muted overflow-hidden">
                             <img
                                 src={module.thumbnail}
                                 alt={module.title}
