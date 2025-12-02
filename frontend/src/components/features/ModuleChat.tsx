@@ -21,7 +21,7 @@ interface ModuleChatProps {
 }
 
 const ModuleChat: React.FC<ModuleChatProps> = ({
-    moduleId,
+    moduleId: _moduleId, // Will be used for API calls when backend is connected
     currentUserId,
     currentUserName,
     currentUserRole
