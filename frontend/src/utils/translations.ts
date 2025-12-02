@@ -117,6 +117,15 @@ export const translations = {
             },
         ],
 
+        // Data - Market Prices
+        marketData: [
+            { crop: 'Maize (Dry)', price: 'KES 5,200', unit: '90kg Bag', trend: 'up', change: '+5%' },
+            { crop: 'Beans (Rosecoco)', price: 'KES 12,000', unit: '90kg Bag', trend: 'stable', change: '0%' },
+            { crop: 'Potatoes (Shangi)', price: 'KES 3,500', unit: '50kg Bag', trend: 'down', change: '-2%' },
+            { crop: 'Tomatoes', price: 'KES 8,000', unit: '64kg Crate', trend: 'up', change: '+8%' },
+            { crop: 'Onions (Red)', price: 'KES 90', unit: '1kg', trend: 'up', change: '+3%' },
+        ],
+
         // Certificates Page
         myCertificates: 'My Certificates',
         viewCertificates: 'View and download your earned certificates',
@@ -239,6 +248,15 @@ export const translations = {
                 thumbnail: "https://images.unsplash.com/photo-1464226184884-fa280b87c399?w=800&q=80",
                 lessons: []
             },
+        ],
+
+        // Data - Market Prices
+        marketData: [
+            { crop: 'Mahindi (Makavu)', price: 'KES 5,200', unit: 'Gunia 90kg', trend: 'up', change: '+5%' },
+            { crop: 'Maharagwe (Rosecoco)', price: 'KES 12,000', unit: 'Gunia 90kg', trend: 'stable', change: '0%' },
+            { crop: 'Viazi (Shangi)', price: 'KES 3,500', unit: 'Gunia 50kg', trend: 'down', change: '-2%' },
+            { crop: 'Nyanya', price: 'KES 8,000', unit: 'Kreti 64kg', trend: 'up', change: '+8%' },
+            { crop: 'Vitunguu (Vekundu)', price: 'KES 90', unit: '1kg', trend: 'up', change: '+3%' },
         ],
 
         // Certificates Page
