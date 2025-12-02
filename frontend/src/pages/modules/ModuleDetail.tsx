@@ -8,6 +8,7 @@ import { cn } from '@/utils/cn';
 import { offlineService } from '@/services/offlineStorage';
 import { useState } from 'react';
 import { Download, Check } from 'lucide-react';
+import ModuleChat from '@/components/features/ModuleChat';
 
 const ModuleDetail: React.FC = () => {
     const { id } = useParams<{ id: string }>();
@@ -141,6 +142,16 @@ const ModuleDetail: React.FC = () => {
                         </CardContent>
                     </Card>
                 </div>
+            </div>
+
+            {/* Module Chat */}
+            <div className="mt-6">
+                <ModuleChat
+                    moduleId={id || '1'}
+                    currentUserId="user123"
+                    currentUserName="John Doe"
+                    currentUserRole="LEARNER"
+                />
             </div>
         </div>
     );
