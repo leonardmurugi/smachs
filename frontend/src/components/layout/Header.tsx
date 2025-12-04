@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
-import { Menu, Bell, User, Settings, LogOut, ChevronDown, Globe, Moon, Sun } from 'lucide-react';
+import { Menu, Bell, User, Settings, LogOut, ChevronDown, Moon, Sun } from 'lucide-react';
 import { Button } from '@/components/ui/Button';
+import { Switch } from '@/components/ui/Switch';
 import { useLanguage } from '@/context/LanguageContext';
 import { useTheme } from '@/context/ThemeContext';
 
@@ -44,27 +45,26 @@ const Header: React.FC<HeaderProps> = ({ onMenuToggle }) => {
                 <div className="flex-1" />
 
                 {/* Language Toggle */}
-                <Button
-                    variant="ghost"
-                    size="sm"
-                    className="hidden md:flex items-center gap-2 mr-2"
-                    onClick={() => setLanguage(language === 'en' ? 'sw' : 'en')}
-                >
-                    <Globe className="h-4 w-4" />
-                    <span className="font-medium">{language === 'en' ? 'EN' : 'SW'}</span>
-                </Button>
+                <div className="hidden md:flex items-center gap-2 mr-2">
+                    <span className="text-xs font-medium text-muted-foreground">EN</span>
+                    <Switch
+                        checked={language === 'sw'}
+                        onChange={(checked) => setLanguage(checked ? 'sw' : 'en')}
+                        aria-label="Toggle language"
+                    />
+                    <span className="text-xs font-medium text-muted-foreground">SW</span>
+                </div>
 
                 {/* Theme Toggle */}
-                <Button
-                    variant="ghost"
-                    size="icon"
-                    className="mr-2"
-                    onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
-                >
-                    <Sun className="h-5 w-5 rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" />
-                    <Moon className="absolute h-5 w-5 rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100" />
-                    <span className="sr-only">Toggle theme</span>
-                </Button>
+                <div className="flex items-center gap-2 mr-2">
+                    <Sun className="h-4 w-4 text-muted-foreground" />
+                    <Switch
+                        checked={theme === 'dark'}
+                        onChange={(checked) => setTheme(checked ? 'dark' : 'light')}
+                        aria-label="Toggle theme"
+                    />
+                    <Moon className="h-4 w-4 text-muted-foreground" />
+                </div>
 
                 {/* Notifications */}
                 <div className="relative">
