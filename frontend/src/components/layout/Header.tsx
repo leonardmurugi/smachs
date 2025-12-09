@@ -38,7 +38,8 @@ const Header: React.FC<HeaderProps> = ({ onMenuToggle }) => {
 
                 {/* Logo/Title */}
                 <div className="flex items-center gap-2">
-                    <h2 className="text-lg font-semibold">SMACHS Academy</h2>
+                    <img src="/logo.jpg" alt="GeenSphere Academia Logo" className="h-8 w-auto object-contain" />
+
                 </div>
 
                 {/* Spacer */}
